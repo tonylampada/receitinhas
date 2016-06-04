@@ -1,0 +1,37 @@
+<div class="container">
+    <div ng-if="!m.receita_selected">
+        <div class="row">
+            <div class="form-group">
+                <label>Busca</label>
+                <input type="text" class="form-control" ng-model="m.searchstring">
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <tr>
+                    <th>Receita</th>
+                    <th>Tempo de preparo</th>
+                </tr>
+                <tr ng-repeat="receita in m.receitas | filter: m.searchstring">
+                    <td><a href ng-click="m.select(receita)">{{receita.nome}}</a></td>
+                    <td>{{receita.tempo}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-if="m.receita_selected">
+        <h1>{{m.receita_selected.nome}} ({{m.receita_selected.tempo}})</h1>
+        <img style="max-width: 100%" src="https://catracalivre.com.br/wp-content/uploads/2015/11/sorbetnatuee.jpg">
+        <h2>Modo de fazer:</h2>
+        <p>
+            Bata as claras em neve e reserve
+            Misture as gemas, a margarina e o açúcar até obter uma massa homogênea
+            Acrescente o leite e a farinha de trigo aos poucos sem parar de bater
+            Por último, adicione as claras em neve e o fermento
+            Despeje a massa em uma forma grande de furo central untada e enfarinhada
+            Asse em forno médio (180° C), preaquecido, por 40 minutos ou ao furar com um garfo, este saia limpo
+        </p>
+        <button ng-click="m.back2list()">Voltar</button>
+    </div>
+
+</div>
